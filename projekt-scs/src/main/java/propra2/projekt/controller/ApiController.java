@@ -3,12 +3,15 @@ package propra2.projekt.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import propra2.projekt.datebank.model.Event;
 import propra2.projekt.datebank.model.Projekt;
+import propra2.projekt.service.IEventService;
 import propra2.projekt.service.IProjektService;
 import propra2.projekt.service.ProjektService;
 
 import javax.xml.crypto.Data;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,10 +20,17 @@ public class ApiController {
 
     @Autowired
     IProjektService projektService;
+    @Autowired
+    IEventService eventService;
 
     @GetMapping("/")
     public List<Projekt> findAllProjekt(){
         return projektService.getAllProjects();
+    }
+
+    @GetMapping("/events")
+    public List<Event> events(){
+        return eventService.findAllEvents();
     }
 
     @GetMapping("/{id}")
@@ -33,7 +43,7 @@ public class ApiController {
         return projektService.getProjectbyId(id).getStartTime();
     }
 
-    @GetMapping("/{id}/Beschreibung")
+    @GetMapping("/{id}/beschreibung")
     public String findProjektBeschreibung(@PathVariable Long id){
         return projektService.getProjectbyId(id).getBeschreibung();
     }
@@ -43,7 +53,7 @@ public class ApiController {
         return projektService.getProjectbyId(id).getLast();
     }
 
-    @GetMapping("/{id}/People")
+    @GetMapping("/{id}/people")
     public Integer[] findProjektPerdon(@PathVariable Long id){
         return projektService.getProjectbyId(id).getPersonId();
     }
