@@ -1,0 +1,43 @@
+<!DOCTYPE  html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Project</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1>Create New Project</h1>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"></h5>
+        </div>
+        <form th:action="@{/newproject}" method="post">
+            <label for="name">Project name:</label>
+            <input type="text" class="form-control" name="name" id="name" > </input>
+
+            <label for="beschreibung">Project info:</label>
+            <input type="text" class="form-control" name="beschreibung" id="beschreibung" > </input>
+
+            <label for="budget">Project budget:</label>
+            <input type="text" class="form-control" name="budget" id="budget"> </input>
+
+            <label for="startTime">Project start time:</label>
+            <input type="date" class="form-control" name="startTime" id="startTime"  placeholder="formart YYYY-MM-DD"> </input>
+
+            <label for="last">Project lasts:</label>
+            <input type="text" class="form-control" name="last" id="last" > </input>
+
+            <button type="submit" class="btn btn-primary" style="margin: 3px; height: 45px; width: 100px">Save</button>
+        </form>
+        <div class="card-body">
+            <a href="/" class="card-link">←Back</a>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

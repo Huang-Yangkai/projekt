@@ -1,0 +1,48 @@
+<!DOCTYPE  html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Project</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1>Change Information</h1>
+    </div>
+
+        <div th:each="project: ${project}" class="card">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${project.getName()}"></h5>
+            </div>
+            <form th:action="@{/edit/{id}(id=${project.getId()})}" th:method="${project != null}?'put':'post'">
+                <label for="name">Project name:</label>
+                <input type="text" class="form-control" name="name" id="name" th:value="${project.getName()}"> </input>
+
+                <label for="beschreibung">Project info:</label>
+                <input type="text" class="form-control" name="beschreibung" id="beschreibung" th:value="${project.getBeschreibung()}"> </input>
+
+                <label for="budget">Project budget:</label>
+                <input type="text" class="form-control" name="budget" id="budget" th:value="${project.getBudget()}"> </input>
+
+                <label for="startTime">Project start time:</label>
+                <input type="date" class="form-control" name="startTime" id="startTime" th:value="${project.getStartTime()}" placeholder="formart YYYY-MM-DD"> </input>
+
+                <label for="last">Project lasts:</label>
+                <input type="text" class="form-control" name="last" id="last" th:value="${project.getLast()}"> </input>
+
+                <button type="submit" class="btn btn-primary" style="margin: 3px; height: 45px; width: 100px">Save</button>
+            </form>
+
+            <form th:action="@{/edit/{id}(id=${project.getId()})}" method="post" style="margin: 3px">
+                <button type="submit" class="btn btn-primary" style="background: #dc3545; height: 45px; width: 100px">Delete</button>
+            </form>
+
+            <div class="card-body">
+                <a href="/" class="card-link">←Back</a>
+            </div>
+
+        </div>
+
+</div>
+</body>
+</html>

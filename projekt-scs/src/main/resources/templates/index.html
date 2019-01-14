@@ -1,0 +1,45 @@
+<!DOCTYPE  html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Project</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="popper.min.js"></script>
+    <script type="text/javascript" src="bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="clearfix" style="margin-bottom: 20px;">
+        <h1>Project</h1>
+        </div>
+    </div>
+        <div class="clearfix" style="margin-bottom: 20px;">
+            <a th:href="@{/newproject}" class="btn btn-primary">Neues Projekt</a>
+        </div>
+        <div class="row">
+            <div th:each="project: ${projects}" class="col-sm-4">
+                <div class="clearfix" style="margin-bottom: 20px;">
+                    <div class="card">
+                         <div class="card-body">
+                            <h5 class="card-title" th:text="${project.getName()}"></h5>
+                             <p class="card-text" th:text="${project.getBeschreibung()}" ></p>
+                         </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" th:text="${'Budget: '+project.getBudget()+'€'}"></li>
+                            <li class="list-group-item" th:text="${'Startdatum: '+ project.getStartTime().toLocalDate().getDayOfMonth()+' '+project.getStartTime().toLocalDate().getMonth().name().subSequence(0,3)}"></li>
+                            <li class="list-group-item" th:text="${'Laufzeit: '+project.getLast()}+' Monaten'"></li>
+                            <li class="list-group-item">Team:</li>
+                        </ul>
+                        <div class="card-body">
+                            <a th:href="@{edit/{id}(id=${project.getId()})}" class="card-link">Bearbeiten</a>
+                            <p class="card-text"><small class="text-muted"></small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+</body>
+</html>
