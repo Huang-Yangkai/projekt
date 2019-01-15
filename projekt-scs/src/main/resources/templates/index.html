@@ -27,9 +27,13 @@
                          </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item" th:text="${'Budget: '+project.getBudget()+'€'}"></li>
-                            <li class="list-group-item" th:text="${'Startdatum: '+ project.getStartTime().toLocalDate().getDayOfMonth()+' '+project.getStartTime().toLocalDate().getMonth().name().subSequence(0,3)}"></li>
+                            <li class="list-group-item" th:text="${'Startdatum: '+project.getStartTime()}"></li>
                             <li class="list-group-item" th:text="${'Laufzeit: '+project.getLast()}+' Monaten'"></li>
-                            <li class="list-group-item">Team:</li>
+                            <li class="list-group-item">Team:
+                                <ul class="list-group list-group-flush" th:each="person: ${persons}">
+                                    <li class="list-group-item" th:text="${person.getVorname()+' '+person.getNachname()+'('+person.getRolle()+')'}">Defaut</li>
+                                </ul>
+                            </li>
                         </ul>
                         <div class="card-body">
                             <a th:href="@{/projekt/edit/{id}(id=${project.getId()})}" class="card-link">Bearbeiten</a>

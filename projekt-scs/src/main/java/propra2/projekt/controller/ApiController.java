@@ -7,11 +7,8 @@ import propra2.projekt.datebank.model.Event;
 import propra2.projekt.datebank.model.Projekt;
 import propra2.projekt.service.IEventService;
 import propra2.projekt.service.IProjektService;
-import propra2.projekt.service.ProjektService;
 
-import javax.xml.crypto.Data;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

@@ -16,6 +16,8 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Long projektId;
+
     private boolean deleted;
 
     private boolean edit;

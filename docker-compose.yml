@@ -15,12 +15,23 @@ services:
   # Falls Sie das Person-SCS implementieren,
   # überschreiben Sie diesen Teil
   person:
-    image: hashicorp/http-echo
-    command: -listen=:8080 -text="Hello from person"
-  #
-  # persondb:
-  #  image: hashicorp/http-echo
-  #  command: -listen=:3306 -text="I am just a dummy"
+    image: grvid100/person-scs
+    environment:
+      - DATABASE_HOST=persondb
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_NAME=personen
+    depends_on:
+      - persondb
+
+  persondb:
+   image: mysql:latest
+   environment:
+     - MYSQL_ROOT_PASSWORD=root
+     - MYSQL_DATABASE=personen
+     - MYSQL_PASSWORD=root
+   volumes:
+     - ./datavolume_person:/var/lib/mysql
 
   # ========================================
   # Falls Sie das Projekt-SCS implementieren,

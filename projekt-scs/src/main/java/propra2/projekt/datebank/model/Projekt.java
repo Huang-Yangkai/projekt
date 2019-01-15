@@ -13,7 +13,7 @@ import java.sql.Date;
 public class Projekt {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long Id;
 
     private String name;
